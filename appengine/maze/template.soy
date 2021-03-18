@@ -1,0 +1,432 @@
+{namespace Maze.soy}
+
+/**
+ * This is a Closure Template.
+ *
+ * To regenerate just English, run:
+ *   make maze-en
+ *
+ * To regenerate all languages, run:
+ *   make languages
+ */
+
+/**
+ * Translated messages for use in JavaScript.
+ */
+{template .messages}
+  {call BlocklyGames.soy.messages /}
+  <div style="display: none">
+    <span id="Maze_moveForward">{msg meaning="Maze.moveForward" desc="block text - Imperative or infinitive of a verb for a person moving (walking) in the direction he/she is facing."}move forward{/msg}</span>
+    <span id="Maze_turnLeft">{msg meaning="Maze.turnLeft" desc="[[Translating:Blockly#Drop-Down_Menus dropdown]] - Imperative or infinitive of a verb for a person turning his head and body one quarter rotation counter-clockwise.  Prefer a translation that has text in common with the translation of 'turn right'.  See [[Translating:Blockly#Drop-Down_Menus]]."}turn left{/msg}</span>
+    <span id="Maze_turnRight">{msg meaning="Maze.turnRight" desc="[[Translating:Blockly#Drop-Down_Menus dropdown]] - Imperative or infinitive of a verb for a person turning his head and body one quarter rotation clockwise.  Prefer a translation that has text in common with the translation of 'turn left'.  See [[Translating:Blockly#Drop-Down_Menus]]."}turn right{/msg}</span>
+    <span id="Maze_doCode">{{msg meaning="Maze.doCode" desc="block text - Imperative or infinitive of a verb preceding one or more commands to a person.  This is part of [https://github.com/google/blockly/wiki/Loops#repeat repeat] and [https://github.com/google/blockly/wiki/IfElse#If_blocks if] blocks.\n{lb}{lb}Identical|Do{rb}{rb}"}}do{{/msg}}</span>
+    <span id="Maze_elseCode">{{msg meaning="Maze.elseCode" desc="block text - Conjunction meaning 'otherwise', introducing commands to be performed if a previous condition was not true, as in 'if x>3, do this, else do that'.  See [https://github.com/google/blockly/wiki/IfElse#If-Else_blocks].\n{lb}{lb}Identical|Else{rb}{rb}"}}else{{/msg}}</span>
+    // The helpIfElse definition was copied up here ahead of when it is needed
+    // so that it is adjacent to the previous definition.
+    <span id="Maze_helpIfElse">{msg meaning="Maze.helpIfElse" desc="callout - This is shown when the 'if-else' block is introduced.  For 'if-else' concatenate the words for 'if' and 'else/otherwise'."}If-else blocks will do one thing or the other.{/msg}</span>
+    <span id="Maze_pathAhead">{msg meaning="Maze.pathAhead" desc="[[Translating:Blockly#Drop-Down_Menus dropdown]] - Condensed form of 'if there is a path ahead', as in: 'if path ahead, go forward'.  Prefer translation that has text in common with 'if path to the left' and 'if path to the right'."}if path ahead{/msg}</span>
+    <span id="Maze_pathLeft">{msg meaning="Maze.pathLeft" desc="[[Translating:Blockly#Drop-Down_Menus dropdown]] - Condensed form of 'if there is a path to the left', as in: 'if path to the left, turn left'."}if path to the left{/msg}</span>
+    <span id="Maze_pathRight">{msg meaning="Maze.pathRight" desc="[[Translating:Blockly#Drop-Down_Menus dropdown]] - Condensed form of 'if there is a path to the right', as in: 'if path to the right, turn right'."}if path to the right{/msg}</span>
+    <span id="Maze_repeatUntil">{msg meaning="Maze.repeatUntil" desc="block text - Imperative or infinitive of a verb to repeat the following commands.  The phrase is followed by the symbol denoting the end of the maze."}repeat until{/msg}</span>
+    <span id="Maze_moveForwardTooltip">{msg meaning="Maze.moveForwardTooltip" desc="tooltip - Moves the icon on the screen representing the player forward one square on the maze board."}Moves the player forward one space.{/msg}</span>
+    <span id="Maze_turnTooltip">{msg meaning="Maze.turnTooltip" desc="tooltip - Turns the icon on the screen representing the player 90 degrees counter-clockwise (left) or clockwise (right)."}Turns the player left or right by 90 degrees.{/msg}</span>
+    <span id="Maze_ifTooltip">{msg meaning="Maze.ifTooltip" desc="tooltip - 'path' refers to a path through a maze."}If there is a path in the specified direction, then do some actions.{/msg}</span>
+    <span id="Maze_ifelseTooltip">{msg meaning="Maze.ifelseTooltip" desc="tooltip - 'path' refers to a path through a maze."}If there is a path in the specified direction, then do the first block of actions. Otherwise, do the second block of actions.{/msg}</span>
+    <span id="Maze_whileTooltip">{msg meaning="Maze.whileTooltip" desc="tooltip - Repeat the enclosed commands until the maze has been successfully completed (the end point reached)."}Repeat the enclosed actions until finish point is reached.{/msg}</span>
+    <span id="Maze_capacity0">{msg meaning="Maze.capacity0" desc="warning - No more blocks may be added until some are removed.  Please include '%0' in the translated string.  It will be replaced with '0' and made bold."}You have %0 blocks left.{/msg}</span>
+    <span id="Maze_capacity1">{{msg meaning="Maze.capacity1" desc="warning - Only one more block may be added. Please include '%1' in the translated string. It will be replaced with '1' and made bold.\n\nSee also:\n* {lb}{lb}msg-blockly|Maze.capacity2{rb}{rb}"}}You have %1 block left.{{/msg}}</span>
+    <span id="Maze_capacity2">{{msg meaning="Maze.capacity2" desc="warning - Only %2 more blocks may be used, where %2 is an integer greater than 1.\n\nSee also:\n* {lb}{lb}msg-blockly|Maze.capacity1{rb}{rb}"}}You have %2 blocks left.{{/msg}}</span>
+  </div>
+{/template}
+
+/**
+ * Web page structure.
+ */
+{template .start}
+  {call .messages /}
+  {call BlocklyGames.soy.headerBar}
+    {param appName}
+      {msg meaning="Games.maze" desc="IBID"}MazeGame{/msg}
+    {/param}
+    {param levelLinkSuffix}skin={$ij.skin}{/param}
+    {param hasLinkButton: true /}
+    {param hasHelpButton: false /}
+    {param farLeftHtml}
+      <button id="pegmanButton">
+        <img src="common/1x1.gif">
+        <span id="pegmanButtonArrow"></span>
+      </button>
+    {/param}
+  {/call}
+
+
+<div id="header2">
+<h4 id='help-ins'>{msg meaning="Maze.headerHelp" desc="callout - Instruction in header"}Level instructions:{/msg}</h4>
+<p class="header-help"></p>
+</div>
+
+<div id="visualization">
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" id="svgMaze" width="400px" height="400px">
+      <g id="look">
+        <path d="M 0,-15 a 15 15 0 0 1 15 15" />
+        <path d="M 0,-35 a 35 35 0 0 1 35 35" />
+        <path d="M 0,-55 a 55 55 0 0 1 55 55" />
+      </g>
+    </svg>
+    <div id="capacityBubble">
+      <div id="capacity">Write something</div>
+    </div>
+</div>
+
+  <table width="400">
+    <tr>
+      <td style="width: 400px; text-align: left; vertical-align: top;">
+        <button id="runButton" class="primary" title="{msg meaning="Maze.runTooltip" desc="tooltip - Pressing this button runs the computer program the user has written to move the player through the maze."}Makes the player do what the blocks say.{/msg}">
+          <img src="common/1x1.gif" class="run icon21"> {msg meaning="Games.runProgram" desc="IBID"}Play{/msg}
+        </button>
+        //style="display: none"
+        <button id="resetButton" class="primary" title="{msg meaning="Maze.resetTooltip" desc="tooltip - Pressing this button restores the player to the start position and enables the user's program to be run again."}Put the player back at the start of the maze.{/msg}">
+          <img src="common/1x1.gif" class="stop icon21"> {msg meaning="Games.resetProgram" desc="IBID"}Reset{/msg}
+        </button>
+        <button id="submitButton" class="primary"  title="{msg meaning="Maze.submitTooltip" desc="tooltip - Pressing this button submits your solution."}Submit your results.{/msg}">
+        {msg meaning="Games.submitProgram" desc="IBID"}Submit{/msg}
+        </button>
+      </td>
+    </tr>
+  </table>
+
+  
+  <div id='outcome'>
+  <p class='outcome__label'>============ {msg meaning="Maze.outcomeResult" desc="callout"}Result{/msg} ============</p>
+  <p class='outcome__label'> ▶ {msg meaning="Maze.outcomePlay" desc="callout"}Play button count:{/msg} <span class='outcome__value outcome__value--play'>0</span></p>
+  <p class='outcome__label'>--------------------------------------</p>
+  <p class='outcome__label'>{msg meaning="Maze.outcomeRLevel" desc="callout"}Level outcome: {/msg}<span id='msgSuccess'> {msg meaning="Maze.outcomeSuccess" desc="callout"}Success{/msg}</span><span id='msgFail'> {msg meaning="Maze.outcomeFail" desc="callout"}Fail{/msg}</span></p>
+  <p class='outcome__label'>--------------------------------------</p>
+    <p class='outcome__label'>💯 {msg meaning="Maze.levelScore" desc="callout"}Level score: {/msg}<span class='outcome__value outcome__value--score'> </span></p>
+    <p class='outcome__label'>🏆 {msg meaning="Maze.totalScore" desc="callout"}Total score: {/msg}<span class='outcome__value outcome__value--total__score'>0</span></p>
+  </div>
+     
+  {call .toolbox /}
+  <div id="blockly"></div>
+
+  <div id="pegmanMenu"></div>
+
+  {call BlocklyGames.soy.dialog /}
+  {call BlocklyGames.soy.doneDialog /}
+  //για το νέο μήνυμα σε περίπτωση αποτυχίας
+  {call BlocklyGames.soy.doneDialog2 /}
+  {call BlocklyGames.soy.abortDialog /}
+  {call BlocklyGames.soy.storageDialog /}
+
+
+// ======================================================================================================
+// **********************************Επίπεδο 1***************************************************
+  {if $ij.level == 1} // αρχή ιf επιλογή επιπέδου για οδηγίες και βοήθεια
+  // oδηγίες επιπέδου 1
+  <div id="dialogHelpLevel1" class="dialogHiddenContent">
+        {msg meaning="Maze.helpLevel1" desc="callout - Introduction to level 1."}In this level you have to correct the blocks in order to help me cross the path!!{/msg}
+    </div>
+  //επίπεδο 1 βοήθεια αυτόματα
+<div id="dialogHelpStack" class="dialogHiddenContent">
+      <table><tr><td valign="top">
+        <img src="maze/help.png">
+        </td><td>&nbsp;</td><td valign="top">
+        {msg meaning="Maze.helpStack" desc="callout - first help message in maze level 1."}"One of the steps is wrong. After trying your code with play button, try and change the step you think is wrong.{/msg}
+      {call BlocklyGames.soy.ok /}
+      </td></tr>
+      </table>
+    </div>
+  // επίπεδο 1 κουμπί play βοήθεια
+    <div id="dialogHelpPlay11" class="dialogHiddenContent">
+      <table><tr><td valign="top">
+        <img src="maze/help.png">
+        </td><td>&nbsp;</td><td valign="top">
+        {msg meaning="Maze.helpPlay11" desc="callout - Help message when a player uses play button once."}If you use the block 'turn' player will turn on site right or left without moving.{/msg}
+        {call BlocklyGames.soy.ok /}
+      </td></tr>
+      </table>
+    </div>
+     <div id="dialogHelpPlay12" class="dialogHiddenContent">
+      <table><tr><td valign="top">
+        <img src="maze/help.png">
+        </td><td>&nbsp;</td><td valign="top">
+        {msg meaning="Maze.helpPlay12" desc="callout - Help message when a player uses play button twice."}One or more of the turn-directions is wrong.{/msg}
+        {call BlocklyGames.soy.ok /}
+      </td></tr>
+      </table>
+    </div>
+// **********************************Επίπεδο 2***************************************************  
+  {elseif $ij.level == 2}
+  // oδηγίες επιπέδου 2
+  <div id="dialogHelpLevel2" class="dialogHiddenContent">
+        {msg meaning="Maze.helpLevel2" desc="callout - Introduction to level 2."}In this level you have to correct the options of the blocks in order to help me cross the path!!{/msg}
+    </div>
+  // επίπεδο 2 βοήθεια στην αρχή
+    <div id="dialogHelpPlay21" class="dialogHiddenContent">
+      <table><tr><td valign="top">
+        <img src="maze/help.png">
+        </td><td>&nbsp;</td><td valign="top">
+        {msg meaning="Maze.helpPlay21" desc="callout - Help message when a player uses play button once."}Think how many 'move forward' blocks must be stacked in order to help me reach my goal.{/msg}
+        {call BlocklyGames.soy.ok /}
+      </td></tr>
+      </table>
+    </div>
+     // επίπεδο 2 κουμπί play βοήθεια
+     <div id="dialogHelpPlay22" class="dialogHiddenContent">
+      <table><tr><td valign="top">
+        <img src="maze/help.png">
+        </td><td>&nbsp;</td><td valign="top">
+        {msg meaning="Maze.helpPlay22" desc="callout - Help message when a player uses play button twice."}Think how many turns you must have in order to help me reach my goal.{/msg}
+        {call BlocklyGames.soy.ok /}
+      </td></tr>
+      </table>
+    </div>
+// **********************************Επίπεδο 3***************************************************
+  {elseif $ij.level == 3}
+  // oδηγίες επιπέδου 3
+  <div id="dialogHelpLevel3" class="dialogHiddenContent">
+        {msg meaning="Maze.helpLevel3" desc="callout - Introduction to level 3."}Put the right block between the two move forward blocks in order to help me reach the goal.{/msg}
+    </div>
+    // επίπεδο 3 βοήθεια στην αρχή του επιπέδου
+    <div id="dialogHelpPlay31" class="dialogHiddenContent">
+      <table><tr><td valign="top">
+        <img src="maze/help.png">
+        </td><td>&nbsp;</td><td valign="top">
+        {msg meaning="Maze.helpPlay31" desc="callout - Help message at the start of the level."}Think how many 'move forward' blocks we must have before 'turn left' block. How many times does your character moves forward now?{/msg}
+        {call BlocklyGames.soy.ok /}
+      </td></tr>
+      </table>
+    </div>
+    
+// **********************************Επίπεδο 4***************************************************
+  {elseif $ij.level == 4}
+  // oδηγίες επιπέδου 4
+  <div id="dialogHelpLevel4" class="dialogHiddenContent">
+        {msg meaning="Maze.helpLevel4" desc="callout - Introduction to level 4."}Correct the block options if needed and put the right statements in the if-else block in order to help me reach my goal.{/msg}
+    </div>
+    // επίπεδο 4 κουμπί play βοήθεια
+    <div id="dialogHelpPlay41" class="dialogHiddenContent">
+      <table><tr><td valign="top">
+        <img src="maze/help.png">
+        </td><td>&nbsp;</td><td valign="top">
+        {msg meaning="Maze.helpPlay41" desc="callout - Help message when a player uses play button once."}Your character must move forward. If path is to the right, character must turn right, if path is to the left character must turn left.{/msg}
+        {call BlocklyGames.soy.ok /}
+      </td></tr>
+      </table>
+    </div>
+     
+// **********************************Επίπεδο 5***************************************************  
+  {elseif $ij.level == 5}
+  // oδηγίες επιπέδου 5
+  <div id="dialogHelpLevel5" class="dialogHiddenContent">
+        {msg meaning="Maze.helpLevel5" desc="callout - Introduction to level 5."}Correct the block options in order to help me reach my goal.{/msg}
+    </div>
+    // επίπεδο 5 κουμπί play βοήθεια
+    <div id="dialogHelpPlay51" class="dialogHiddenContent">
+      <table><tr><td valign="top">
+        <img src="maze/help.png">
+        </td><td>&nbsp;</td><td valign="top">
+        {msg meaning="Maze.helpPlay51" desc="callout - Help message when a player uses play button once."}If path is to the left where should your character turn? Likewise, where should your character turn if path is to the right?{/msg}
+        {call BlocklyGames.soy.ok /}
+      </td></tr>
+      </table>
+    </div>
+     
+// **********************************Επίπεδο 6***************************************************    
+  {elseif $ij.level == 6}
+  // oδηγίες επιπέδου 6
+  <div id="dialogHelpLevel6" class="dialogHiddenContent">
+        {msg meaning="Maze.helpLevel6" desc="callout - Introduction to level 6."}Fill the else statement with the right block in order to help me reach my goal.{/msg}
+    </div>
+    // επίπεδο 6 κουμπί play βοήθεια
+    <div id="dialogHelpPlay61" class="dialogHiddenContent">
+      <table><tr><td valign="top">
+        <img src="maze/help.png">
+        </td><td>&nbsp;</td><td valign="top">
+        {msg meaning="Maze.helpPlay61" desc="callout - Help message when a player uses play button once."}If path is to the right then your character should turn right. But if path is to the left where should your character turn?{/msg}
+        {call BlocklyGames.soy.ok /}
+      </td></tr>
+      </table>
+    </div>
+  
+// **********************************Επίπεδο 7***************************************************   
+  {elseif $ij.level == 7}
+  // oδηγίες επιπέδου 7
+  <div id="dialogHelpLevel7" class="dialogHiddenContent">
+        {msg meaning="Maze.helpLevel7" desc="callout - Introduction to level 7."}Use the right blocks in order to help reach my goal.{/msg}
+    </div>
+    // επίπεδο 7 κουμπί play βοήθεια
+    <div id="dialogHelpPlay71" class="dialogHiddenContent">
+      <table><tr><td valign="top">
+        <img src="maze/help.png">
+        </td><td>&nbsp;</td><td valign="top">
+        {msg meaning="Maze.helpPlay71" desc="callout - Help message when a player uses play button once."}If path ahead your character should move ahead.{/msg}
+        {call BlocklyGames.soy.ok /}
+      </td></tr>
+      </table>
+    </div>
+     <div id="dialogHelpPlay72" class="dialogHiddenContent">
+      <table><tr><td valign="top">
+        <img src="maze/help.png">
+        </td><td>&nbsp;</td><td valign="top">
+        {msg meaning="Maze.helpPlay72" desc="callout - Help message when a player uses play button twice."}How many times you have to repeat 'eat sth' block in order for your character to eat 3 things?{/msg}
+        {call BlocklyGames.soy.ok /}
+      </td></tr>
+      </table>
+    </div>
+  {/if} //τέλος if επιλογή επιπέδου για οδηγίες
+
+  //δεν ξέρω αν θα το χρησιμοποιήσω
+  <div id="dialogMazeDone" class="dialogHiddenContent">
+      <table><tr><td>
+        <img src="common/help.png">
+      </td><td>&nbsp;</td><td>
+        {msg meaning="Maze.mazeDone" desc="callout - This level is already won."}You finished the game!{/msg}
+      </td></tr></table>
+    </div>
+
+    //unused**********************Μην τα σβήσεις ακόμα αλλιώς έχεις πρόβλημα στο make**********************************
+    //level 1
+    <div id="dialogHelpOneTopBlock" class="dialogHiddenContent">
+      <table><tr><td>
+        <img src="common/help.png">
+      </td><td>&nbsp;</td><td>
+        {msg meaning="Maze.helpOneTopBlock" desc="callout - This is displayed if a user attempts to run a program composed of multiple stacks of blocks, letting them know they need to create a single stack."}On this level, you need to stack together all of the blocks in the white workspace.{/msg}
+        <div id="sampleOneTopBlock" class="readonly"></div>
+      </td></tr></table>
+    </div>
+    <div id="dialogHelpRun" class="dialogHiddenContent">
+      <table><tr><td>
+        {msg meaning="Maze.helpRun" desc="callout - This is shown after the user has created a program on the first level."}Run your program to see what happens.{/msg}
+      </td><td rowspan=2>
+        <img src="common/help.png">
+      </td></tr><tr><td>
+        <div><img src="maze/help_run.png" class="mirrorImg" height=27 width=141></div>
+      </td></tr></table>
+    </div>
+    //level 2
+    
+    <div id="dialogHelpReset" class="dialogHiddenContent">
+      <table><tr><td>
+        {msg meaning="Maze.helpReset" desc="callout - This is shown after the user has run a program that does not solve the maze."}Your program didn't solve the maze. Press 'Reset' and try again.{/msg}
+      </td><td rowspan=2>
+        <img src="common/help.png">
+      </td></tr><tr><td>
+        <div><img src="maze/help_run.png" class="mirrorImg" height=27 width=141></div>
+      </td></tr></table>
+    </div>
+    //level 3
+    
+      <div id="dialogHelpRepeat" class="dialogHiddenContent">
+        <table><tr><td>
+          <img src="maze/help_up.png">
+        </td><td>
+          {msg meaning="Maze.helpRepeat" desc="callout - This is shown when the 'repeat' block is introduced.  The word 'path' refers to a path through a maze, and 'block' refers to a child's building block."}Reach the end of this path using only two blocks. Use 'repeat' to run a block more than once.{/msg}
+        </td><td>
+          <img src="common/help.png">
+        </td></tr></table>
+      </div>
+    //level 4
+    
+    <div id="dialogHelpCapacity" class="dialogHiddenContent">
+      <table><tr><td>
+        <img src="common/help.png">
+      </td><td>&nbsp;</td><td>
+        {msg meaning="Maze.helpCapacity" desc="callout - This is shown after the user has used all the blocks permitted on this level."}You have used up all the blocks for this level. To create a new block, you first need to delete an existing block.{/msg}
+      </td></tr></table>
+    </div>
+    <div id="dialogHelpRepeatMany" class="dialogHiddenContent">
+      <table><tr><td>
+        <img src="maze/help_up.png">
+      </td><td>
+        {msg meaning="Maze.helpRepeatMany" desc="callout - This is a hint that the user should place a second block inside of a a 'repeat' block."}I must move forward if . If path to the right you must turn right.{/msg}
+      </td><td>
+        <img src="common/help.png">
+      </td></tr></table>
+    </div>
+    //level 5
+    
+    <div id="dialogHelpSkins" class="dialogHiddenContent">
+      <table><tr><td>
+        <img src="common/help.png">
+      </td><td width="95%">
+        {{msg meaning="Maze.helpSkins" desc="callout - This is a hint that the user can change the appearance of the player that moves within the maze."}}Choose your favourite player from this menu.{{/msg}}
+      </td><td>
+        <img src="maze/help_up.png">
+      </td></tr></table>
+    </div>
+    //level 6
+ 
+    <div id="dialogHelpIf" class="dialogHiddenContent">
+      <table><tr><td>
+        <img src="maze/help_up.png">
+      </td><td>
+        {msg meaning="Maze.helpIf" desc="callout - This is shown when the 'if' block is introduced.  An example of an 'if' block is: 'if there is a path to the left, turn left'."}An 'if' block will do something only if the condition is true. Try turning left if there is a path to the left.{/msg}
+      </td><td>
+        <img src="common/help.png">
+      </td></tr></table>
+    </div>
+    //level 7
+     
+    <div id="dialogHelpMenu" class="dialogHiddenContent">
+      <table><tr><td>
+        <img src="maze/help_up.png">
+      </td><td id="helpMenuText">
+        {msg meaning="Maze.helpMenu" desc="callout - %1 will be replaced with an image of the dropdown menu that the user needs to click."}Click on %1 in the 'if' block to change its condition.{/msg}
+      </td><td>
+        <img src="common/help.png">
+      </td></tr></table>
+    </div>
+    //level 9
+    <div id="dialogHelpIfElse" class="dialogHiddenContent">
+      <table><tr><td>
+        <img src="maze/help_down.png">
+      </td><td>
+        {msg meaning="Maze.helpIfElse" desc="IBID"}
+          If-else blocks will do one thing or the other.
+        {/msg}
+      </td><td>
+        <img src="common/help.png">
+      </td></tr></table>
+    </div>
+    //level 10
+    <div id="dialogHelpWallFollow" class="dialogHiddenContent">
+      <table><tr><td>
+        <img src="common/help.png">
+      </td><td>&nbsp;</td><td>
+        {msg meaning="Maze.helpWallFollow" desc="callout - This advises the user to solve a maze by keeping his/her left hand in contact with the wall while proceeding through it.  The final sentence is a warning that only advanced programmers should attempt this problem, as beginners tend to get frustrated."}
+          Can you solve this complicated maze? Try following the left-hand wall. Advanced programmers only!
+        {/msg}
+        {call BlocklyGames.soy.ok /}
+      </td></tr></table>
+    </div>
+
+{/template}
+
+/**
+ * Toolboxes for each level.
+ */
+{template .toolbox}
+  <xml id="toolbox" xmlns="https://developers.google.com/blockly/xml">
+    
+    <block type="maze_moveForward"></block>
+    <block type="maze_turn"><field name="DIR">turnLeft</field></block>
+    <block type="maze_turn"><field name="DIR">turnRight</field></block>
+    {if $ij.level != 6}
+      <block type="maze_if"></block>
+      {if $ij.level > 6}
+        <block type="maze_if"><field name="DIR">isPathLeft</field></block>
+        //add repeat n times
+        <block type="controls_repeat_ext">
+                <value name="TIMES">
+                  <shadow type="math_number">
+                    <field name="NUM">3</field>
+                  </shadow>
+                </value>
+        </block>
+        <block type="maze_forever"></block>
+        <block type="maze_ifElse"></block>
+      {/if}
+    {/if}
+  </xml>
+{/template}

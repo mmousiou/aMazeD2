@@ -1,0 +1,57 @@
+var score = 0;
+var totalScore = 0;
+
+// score = 1;
+// totalScore += score;
+//κώδικας για προσπέλαση βαθμολογίας
+// document.querySelector(".outcome__value--score").textContent = score;
+// document.querySelector(".outcome__value--total__score").textContent = totalScore;
+
+// score = 1;
+        // totalScore += score;
+        //κώδικας για προσπέλαση βαθμολογίας
+        // document.querySelector(".outcome__value--score").textContent = score;
+        // document.querySelector(".outcome__value--total__score").textContent = totalScore;
+        //document.querySelector(".outcome__value--maze__result").textContent = totalScore;
+για να δούμε αν το επίπεδο έχει παιχτεί:
+!BlocklyGames.loadFromLocalStorage(BlocklyGames.NAME,
+                BlocklyGames.LEVEL)
+                
+for (var i = 0; i < 7; i++) {
+        if (!BlocklyGames.loadFromLocalStorage(BlocklyGames.NAME, i)) {
+            BlocklyGames.LEVEL = i;
+        }
+    }
+
+messages 
+
+<div id="dialogHelpPlay11" class="dialogHiddenContent">
+      <table><tr><td>
+        <img src="maze/help.png">
+        </td><td>&nbsp;</td><td valign="top">
+        {msg meaning="Maze.helpPlay1" desc="callout - Help message when a player uses play button once."}If you use the block 'turn' player will turn on site right or left without moving.{/msg}
+        {call BlocklyGames.soy.ok /}
+      </td></tr>
+      </table>
+</div>
+
+local storage
+
+var level = 'level'+BlocklyGames.level;
+    var score = "" + levelData[BlocklyGames.LEVEL - 1].score;
+    // Store 
+    localStorage.setItem(level, score);
+    // Retrieve
+    document.getElementById("result").innerHTML = localStorage.getItem("lastname");
+    document.querySelector(".outcome__value--score").textContent = score;
+
+    var totalScore = 0;
+    //κώδικας για να έχω το score από προηγούμενα επίπεδα
+    if (BlocklyGames.LEVEL == 1) {
+        totalScore = 0;
+    } else if (BlocklyGames.LEVEL == 2) {
+        totalScore = Number(window.getItem(BlocklyGames.LEVEL - 1));
+    } else {
+        totalScore = -1;
+    }
+    document.querySelector(".outcome__value--total__score").textContent = totalScore;
