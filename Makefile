@@ -2,9 +2,9 @@
 # Definitions
 ##############################
 
-USER_APPS = {index,puzzle,maze,bird,turtle,movie,music,pond/docs,pond/tutor,pond/duck,gallery}
-ALL_JSON = {./,index,puzzle,maze,bird,turtle,movie,music,pond/docs,pond,pond/tutor,pond/duck,gallery}
-ALL_TEMPLATES = appengine/template.soy,appengine/index/template.soy,appengine/puzzle/template.soy,appengine/maze/template.soy,appengine/bird/template.soy,appengine/turtle/template.soy,appengine/movie/template.soy,appengine/music/template.soy,appengine/pond/docs/template.soy,appengine/pond/template.soy,appengine/pond/tutor/template.soy,appengine/pond/duck/template.soy,appengine/gallery/template.soy
+USER_APPS = {index,maze}
+ALL_JSON = {./,index,maze}
+ALL_TEMPLATES = appengine/template.soy,appengine/index/template.soy,appengine/maze/template.soy
 
 APP_ENGINE_THIRD_PARTY = appengine/third-party
 SOY_COMPILER = java -jar third-party-downloads/SoyToJsSrcCompiler.jar --shouldProvideRequireSoyNamespaces --isUsingIjData
@@ -23,92 +23,24 @@ index-en:
 	$(SOY_COMPILER) --outputPathFormat appengine/index/generated/en/soy.js --srcs appengine/index/template.soy
 	python build-app.py index en
 
-puzzle-en: common-en
-	$(SOY_COMPILER) --outputPathFormat appengine/puzzle/generated/en/soy.js --srcs appengine/puzzle/template.soy
-	python build-app.py puzzle en
 
 maze-en: common-en
 	$(SOY_COMPILER) --outputPathFormat appengine/maze/generated/en/soy.js --srcs appengine/maze/template.soy
 	python build-app.py maze en
 
-bird-en: common-en
-	$(SOY_COMPILER) --outputPathFormat appengine/bird/generated/en/soy.js --srcs appengine/bird/template.soy
-	python build-app.py bird en
-
-turtle-en: common-en
-	$(SOY_COMPILER) --outputPathFormat appengine/turtle/generated/en/soy.js --srcs appengine/turtle/template.soy
-	python build-app.py turtle en
-
-movie-en: common-en
-	$(SOY_COMPILER) --outputPathFormat appengine/movie/generated/en/soy.js --srcs appengine/movie/template.soy
-	python build-app.py movie en
-
-music-en: common-en
-	$(SOY_COMPILER) --outputPathFormat appengine/music/generated/en/soy.js --srcs appengine/music/template.soy
-	python build-app.py music en
-
-pond-docs-en:
-	mkdir -p appengine/pond/generated/en/
-	$(SOY_COMPILER) --outputPathFormat appengine/pond/docs/generated/en/soy.js --srcs appengine/pond/docs/template.soy
-	python build-app.py pond/docs en
-
-pond-tutor-en: pond-common-en
-	$(SOY_COMPILER) --outputPathFormat appengine/pond/tutor/generated/en/soy.js --srcs appengine/pond/tutor/template.soy
-	python build-app.py pond/tutor en
-
-pond-duck-en: pond-common-en
-	$(SOY_COMPILER) --outputPathFormat appengine/pond/duck/generated/en/soy.js --srcs appengine/pond/duck/template.soy
-	python build-app.py pond/duck en
-
-genetics-en: common-en
-	$(SOY_COMPILER) --outputPathFormat appengine/genetics/generated/en/soy.js --srcs appengine/genetics/template.soy
-	python build-app.py genetics en
-
-gallery-en: common-en
-	$(SOY_COMPILER) --outputPathFormat appengine/gallery/generated/en/soy.js --srcs appengine/gallery/template.soy
-	python build-app.py gallery en
-
-pond-common-en: common-en
-	$(SOY_COMPILER) --outputPathFormat appengine/pond/generated/en/soy.js --srcs appengine/pond/template.soy
 
 common-en:
 	$(SOY_COMPILER) --outputPathFormat appengine/generated/en/soy.js --srcs appengine/template.soy
 
 en: index-en puzzle-en maze-en bird-en turtle-en movie-en music-en pond-docs-en pond-tutor-en pond-duck-en genetics-en gallery-en
 
-index puzzle maze bird turtle movie music gallery: common
+index  maze : common
 	@echo "Generating JS from appengine/$@/template.soy"
 	mkdir -p appengine/$@/generated;
 	i18n/json_to_js.py --output_dir appengine/$@/generated --template appengine/$@/template.soy json/*.json;
 	python build-app.py $@
 	@echo
 
-pond-docs: pond-common
-	@echo "Generating JS from appengine/pond/docs/template.soy"
-	mkdir -p appengine/pond/docs/generated;
-	i18n/json_to_js.py --output_dir appengine/pond/docs/generated --template appengine/pond/docs/template.soy json/*.json;
-	python build-app.py pond/docs
-	@echo
-
-pond-tutor: pond-common
-	@echo "Generating JS from appengine/pond/tutor/template.soy"
-	mkdir -p appengine/pond/tutor/generated;
-	i18n/json_to_js.py --output_dir appengine/pond/tutor/generated --template appengine/pond/tutor/template.soy json/*.json;
-	python build-app.py pond/tutor
-	@echo
-
-pond-duck: pond-common
-	@echo "Generating JS from appengine/pond/duck/template.soy"
-	mkdir -p appengine/pond/duck/generated;
-	i18n/json_to_js.py --output_dir appengine/pond/duck/generated --template appengine/pond/duck/template.soy json/*.json;
-	python build-app.py pond/duck
-	@echo
-
-pond-common: common
-	@echo "Generating JS from appengine/pond/template.soy"
-	mkdir -p appengine/pond/generated;
-	i18n/json_to_js.py --output_dir appengine/pond/generated --template appengine/pond/template.soy json/*.json;
-	@echo
 
 common: soy-to-json
 	@echo "Generating JS from appengine/template.soy"

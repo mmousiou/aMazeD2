@@ -20,12 +20,10 @@ goog.require('Index.soy');
 /**
  * Array of application names.
  */
-Index.APPS = ['puzzle', 'maze', 'bird', 'turtle', 'movie', 'music',
-    'pond-tutor', 'pond-duck'
-];
+Index.APPS = ['maze'];
 
 /**
- * Initialize Blockly and the maze.  Called on page load.
+ * Initialize Blockly and the maze.  Called on page load. Τροποποιήθηκε για να έχει μόνο το maze app
  */
 Index.init = function() {
     // Render the Soy template.
@@ -41,16 +39,14 @@ Index.init = function() {
     languageMenu.addEventListener('change', BlocklyGames.changeLanguage, true);
 
     var storedData = false;
-    var levelsDone = [];
-    for (var i = 0; i < Index.APPS.length; i++) {
-        levelsDone[i] = 0;
-        for (var j = 1; j <= BlocklyGames.MAX_LEVEL; j++) {
-            if (BlocklyGames.loadFromLocalStorage(Index.APPS[i], j)) {
-                storedData = true;
-                levelsDone[i]++;
-            }
+    var levelsDone = 0;
+    for (var j = 1; j <= BlocklyGames.MAX_LEVEL; j++) {
+        if (BlocklyGames.loadFromLocalStorage(Index.APPS[0], j)) {
+            storedData = true;
+            levelsDone++;
         }
     }
+
     if (storedData) {
         var clearButtonPara = document.getElementById('clearDataPara');
         clearButtonPara.style.visibility = 'visible';
@@ -62,18 +58,18 @@ Index.init = function() {
             Index.animateGauge(app, 0, angle);
         };
     }
-    for (var i = 0; i < levelsDone.length; i++) {
-        var app = Index.APPS[i];
-        var denominator = i == 0 ? 1 : BlocklyGames.MAX_LEVEL;
-        var angle = levelsDone[i] / denominator * 270;
-        if (angle) {
-            setTimeout(animateFactory(app, angle), 1500);
-        } else {
-            // Remove gauge if zero, since IE renders a stub.
-            var path = document.getElementById('gauge-' + app);
-            path.parentNode.removeChild(path);
-        }
+
+    var app = Index.APPS[0];
+    var denominator = 1 == 0 ? 1 : BlocklyGames.MAX_LEVEL;
+    var angle = levelsDone / denominator * 270;
+    if (angle) {
+        setTimeout(animateFactory(app, angle), 1500);
+    } else {
+        // Remove gauge if zero, since IE renders a stub.
+        var path = document.getElementById('gauge-' + app);
+        path.parentNode.removeChild(path);
     }
+
 };
 
 window.addEventListener('load', Index.init, false);
@@ -124,11 +120,11 @@ Index.clearData_ = function() {
     if (!confirm(BlocklyGames.getMsg('Index_clear'))) {
         return;
     }
-    for (var i = 0; i < Index.APPS.length; i++) {
-        for (var j = 1; j <= BlocklyGames.MAX_LEVEL; j++) {
-            delete window.localStorage[Index.APPS[i] + j];
-            window.localStorage.clear();
-        }
+
+    for (var j = 1; j <= BlocklyGames.MAX_LEVEL; j++) {
+        delete window.localStorage[Index.APPS[0] + j];
+        window.localStorage.clear();
     }
+
     location.reload();
 };
