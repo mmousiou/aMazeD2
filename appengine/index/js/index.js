@@ -116,6 +116,7 @@ Index.drawGauge = function(app, angle) {
  * Clear all stored data.
  * @private
  */
+
 Index.clearData_ = function() {
     if (!confirm(BlocklyGames.getMsg('Index_clear'))) {
         return;

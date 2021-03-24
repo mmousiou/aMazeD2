@@ -166,7 +166,7 @@
       <table><tr><td valign="top">
         <img src="maze/help.png">
         </td><td>&nbsp;</td><td valign="top">
-        {msg meaning="Maze.helpPlay21" desc="callout - Help message when a player uses play button once."}Think how many 'move forward' blocks must be stacked in order to help me reach my goal.{/msg}
+        {msg meaning="Maze.helpPlay21" desc="callout - Help message when a player uses play button once."}The 'repeat' block is used in order to execute the code of the inner blocks as many times as the number of the repeat choice.{/msg}
         {call BlocklyGames.soy.ok /}
       </td></tr>
       </table>
@@ -176,7 +176,7 @@
       <table><tr><td valign="top">
         <img src="maze/help.png">
         </td><td>&nbsp;</td><td valign="top">
-        {msg meaning="Maze.helpPlay22" desc="callout - Help message when a player uses play button twice."}Think how many turns you must have in order to help me reach my goal.{/msg}
+        {msg meaning="Maze.helpPlay22" desc="callout - Help message when a player uses play button twice."}Think how many steps you must do before turning left? How many steps you do now?{/msg}
         {call BlocklyGames.soy.ok /}
       </td></tr>
       </table>
@@ -192,12 +192,20 @@
       <table><tr><td valign="top">
         <img src="maze/help.png">
         </td><td>&nbsp;</td><td valign="top">
-        {msg meaning="Maze.helpPlay31" desc="callout - Help message at the start of the level."}Think how many 'move forward' blocks we must have before 'turn left' block. How many times does your character moves forward now?{/msg}
+        {msg meaning="Maze.helpPlay31" desc="callout - Help message at the start of the level."}One 'repeat' block can be stucked inside an other.{/msg}
         {call BlocklyGames.soy.ok /}
       </td></tr>
       </table>
     </div>
-    
+    <div id="dialogHelpPlay32" class="dialogHiddenContent">
+      <table><tr><td valign="top">
+        <img src="maze/help.png">
+        </td><td>&nbsp;</td><td valign="top">
+        {msg meaning="Maze.helpPlay32" desc="callout - Help message when a player uses play button twice."}How many steps should your character do in order to cross the whole path? How many 'move forward' blocks must be stacked together? In which of the two 'repeat' blocks you have to change the number?{/msg}
+        {call BlocklyGames.soy.ok /}
+      </td></tr>
+      </table>
+    </div>
 // **********************************Επίπεδο 4***************************************************
   {elseif $ij.level == 4}
   // oδηγίες επιπέδου 4

@@ -369,10 +369,15 @@ BlocklyDialogs.congratulations = function() {
         var lineCount = noComments.split('\n').length;
         var pre = document.getElementById('containerCode');
         pre.textContent = code;
+        //αποθήκευση του κώδικα
+            var codeKey = 'maze-code' + BlocklyGames.LEVEL;
+            var codeValue=  pre.textContent;
+            window.localStorage.setItem(codeKey,codeValue);
         if (typeof prettyPrintOne == 'function') {
             code = pre.innerHTML;
             code = prettyPrintOne(code, 'js');
             pre.innerHTML = code;
+            
         }
         if (lineCount == 1) {
             var text = BlocklyGames.getMsg('Games_linesOfCode1');
@@ -434,6 +439,11 @@ BlocklyDialogs.endOfLevel = function() {
         var lineCount = noComments.split('\n').length;
         var pre = document.getElementById('containerCode2');
         pre.textContent = code;
+        //αποθήκευση του κώδικα
+        var codeKey = 'maze-code' + BlocklyGames.LEVEL;
+            var codeValue=  pre.textContent;
+            window.localStorage.setItem(codeKey,codeValue);
+
         if (typeof prettyPrintOne == 'function') {
             code = pre.innerHTML;
             code = prettyPrintOne(code, 'js');

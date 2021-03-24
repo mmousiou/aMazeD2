@@ -207,9 +207,15 @@ html[dir="RTL"] #pegmanButton>span {
     background-position: -980px 0;
 }
 
-#resetButton {
+#runButton {
     border: 1px solid #1cdf36;
     background-color: #1cdf36;
+    color: #fff;
+}
+
+#resetButton {
+    border: 1px solid #dd4b39;
+    background-color: #dd4b39;
     color: #fff;
 }
 

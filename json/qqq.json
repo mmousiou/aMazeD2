@@ -87,6 +87,7 @@
 	"Maze.helpPlay22": "callout - Help message when a player uses play button twice.",
 	"Maze.helpLevel3": "callout - Introduction to level 3.",
 	"Maze.helpPlay31": "callout - Help message at the start of the level.",
+	"Maze.helpPlay32": "callout - Help message when a player uses play button twice.",
 	"Maze.helpLevel4": "callout - Introduction to level 4.",
 	"Maze.helpPlay41": "callout - Help message when a player uses play button once.",
 	"Maze.helpLevel5": "callout - Introduction to level 5.",

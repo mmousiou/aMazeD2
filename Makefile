@@ -32,7 +32,7 @@ maze-en: common-en
 common-en:
 	$(SOY_COMPILER) --outputPathFormat appengine/generated/en/soy.js --srcs appengine/template.soy
 
-en: index-en puzzle-en maze-en bird-en turtle-en movie-en music-en pond-docs-en pond-tutor-en pond-duck-en genetics-en gallery-en
+en: index-en puzzle-en maze-en
 
 index  maze : common
 	@echo "Generating JS from appengine/$@/template.soy"

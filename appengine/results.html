@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.3.1.css" rel="stylesheet" />
+    <link rel="stylesheet" href="maze/results.css" />
+
+    <title>Αποτελέσματα</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <img src="common/mylogo.png">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+
+            <form class="form-inline my-2 my-lg-2">
+                <label class="mr-sm-2" class='label-nav'>Πρέπει να συμπληρώσετε τα στοιχεία σας, για να δείτε τα αποτελέσματα:  </label>
+                <input type="text" class="form-control mr-sm-2" id="name" name="name" placeholder="Ονοματεπώνυμο">
+                <input type="email" class="form-control mr-sm-2" id="myemail" name="email" placeholder="Email Address" aria-describedby="emailHelp">
+                <span id="emailHelp" class="form-text text-muted" style="display: none;">Please enter a valid e-mail address.</span>
+                <button id="save-btn" class="btn btn-primary my-2 my-sm-0" type="submit">Αποθήκευση</button>
+            </form>
+        </div>
+    </nav>
+
+
+    <!-- main app -->
+    <div class="container" id="app">
+        <hr />
+        <div class="row justify-content-center">
+            <div class="col-10">
+                <h1>Συγχαρητήρια! Ολοκληρώσατε το παιχνίδι!</h1>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="col-md-8 col-sm-12">
+                <div class="media">
+                    <img class="rounded-circle border-left border-right border-secondary mr-4" alt="100x100" style="width: 80px; height: 80px; " src="maze/maze2.png" />
+                    <div class="media-body">
+                        <h3 class="mt-3">
+                            Συνολικό σκορ: <span id="total-score"></span>
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12">
+                <div class="row justify-content-center">
+                    <div>
+                        <p>Διαγραφή δεδομένων και νέο παιχνίδι</p>
+                        <div class="row justify-content-center">
+                            <button id="clear" class="btn btn-primary">Νέο Παιχνίδι</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr />
+
+        </div>
+        <hr />
+
+
+
+        <hr />
+
+        <div class="container text-lg-center">
+
+            <h4>Αποτελέσματα</h4>
+            <hr />
+
+            <br />
+
+            <table id='myTable'>
+                <caption id="caption--text">
+                    caption
+                </caption>
+                <thead>
+                    <tr>
+                        <th> Επίπεδο </th>
+                        <th> Αποτέλεσμα </th>
+                        <th> Βαθμολογία </th>
+                        <th> Χρόνος </th>
+                        <th> Πλήθος play </th>
+                        <th> Κώδικας JavaScript </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><b>1<b/></td>
+                        <td><span class="value" id="result-1">0</span></td>
+                        <td><span class="value" id="score-1">0</span></td>
+                        <td><span class="value" id="time-1">0</span></td>
+                        <td><span class="value" id="play-1">0</span></td>
+                        <td ><div class='code' id="code-1">  </div></td>
+                    </tr>
+                    <tr>
+                        <td ><b>2<b/></td>
+                        <td><span class="value" id="result-2">0</span></td>
+                        <td><span class="value" id="score-2">0</span></td>
+                        <td><span class="value" id="time-2">0</span></td>
+                        <td><span class="value" id="play-2">0</span></td>
+                        <td ><div class='code' id="code-2">  </div></td>
+                    </tr>
+                    <tr>
+                        <td ><b>3<b/></td>
+                        <td><span class="value" id="result-3">0</span></td>
+                        <td><span class="value" id="score-3">0</span></td>
+                        <td><span class="value" id="time-3">0</span></td>
+                        <td><span class="value" id="play-3">0</span></td>
+                        <td ><div class='code' id="code-3">  </div></td>
+                    </tr>
+                    <tr>
+                        <td ><b>4<b/></td>
+                        <td ><span class="value" id="result-4">0</span></td>
+                        <td><span class="value" id="score-4">0</span></td>
+                        <td><span class="value" id="time-4">0</span></td>
+                        <td><span class="value" id="play-4">0</span></td>
+                        <td ><div class='code' id="code-4">  </div></td>
+                    </tr>
+                    <tr>
+                        <td ><b>5<b/></td>
+                        <td><span class="value" id="result-5">0</span></td>
+                        <td><span class="value" id="score-5">0</span></td>
+                        <td><span class="value" id="time-5">0</span></td>
+                        <td><span class="value" id="play-5">0</span></td>
+                        <td ><div class='code' id="code-5">  </div></td>
+                    </tr>
+                    <tr>
+                        <td ><b>6<b/></td>
+                        <td><span class="value" id="result-6">0</span></td>
+                        <td><span class="value" id="score-6">0</span></td>
+                        <td><span class="value" id="time-6">0</span></td>
+                        <td><span class="value" id="play-6">0</span></td>
+                        <td ><div class='code' id="code-6">  </div></td>
+                    </tr>
+                    <tr>
+                        <td ><b>7<b/></td>
+                        <td><span class="value" id="result-7">0</span></td>
+                        <td><span class="value" id="score-7">0</span></td>
+                        <td><span class="value" id="time-7">0</span></td>
+                        <td><span class="value" id="play-7">0</span></td>
+                        <td ><div class='code' id="code-7">  </div></td>
+                    </tr>
+                </tbody>
+	        </table>
+            <br />
+            
+                        <button id="pdfExport" value="Export" onclick="Export()" class="btn btn-primary mr-2">
+                            Λήψη pdf
+                        </button>
+                
+                    <button id="xlsExport" value="Export" onclick="exportTableToExcel('myTable','user-data')" class="btn btn-primary">
+                        Λήψη excel
+                    </button>
+               
+        </div>
+    </div>     
+      
+      <hr />
+        
+   
+      <footer class="text-center">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <p>Copyright © mmousiou. All rights reserved.</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script src="maze/js/result.js"></script>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="maze/js/jquery-3.3.1.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="maze/js/popper.min.js"></script>
+    <script src="maze/js/bootstrap-4.3.1.js"></script>
+   
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
+    <script type="text/javascript">
+        function Export() {
+            html2canvas(document.getElementById("myTable"), {
+                onrendered: function(canvas) {
+                    var data = canvas.toDataURL();
+                    var docDefinition = {
+                        content: [{
+                            image: data,
+                            width: 350,
+                        }, ],
+                    };
+                    pdfMake.createPdf(docDefinition).download("data.pdf");
+                },
+            });
+        }
+    </script>
+
+</body>
+</html>

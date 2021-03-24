@@ -1,11 +1,11 @@
 {
 	"@metadata": {
 		"author": "Neil Fraser <fraser@google.com>",
-		"lastupdated": "2021-03-19 14:39:58.072055",
+		"lastupdated": "2021-03-24 14:49:57.806718",
 		"locale": "en",
 		"messagedocumentation" : "qqq"
 	},
-	"Games.name": "Home Page",
+	"Games.name": "About",
 	"Games.puzzle": "Puzzle",
 	"Games.maze": "Maze",
 	"Games.bird": "Bird",
@@ -89,10 +89,11 @@
 	"Maze.helpPlay11": "If you use the block 'turn' player will turn on site right or left without moving.",
 	"Maze.helpPlay12": "One or more of the turn-directions is wrong.",
 	"Maze.helpLevel2": "In this level you have to correct the options of the blocks in order to help me cross the path!!",
-	"Maze.helpPlay21": "Think how many 'move forward' blocks must be stacked in order to help me reach my goal.",
-	"Maze.helpPlay22": "Think how many turns you must have in order to help me reach my goal.",
+	"Maze.helpPlay21": "The 'repeat' block is used in order to execute the code of the inner blocks as many times as the number of the repeat choice.",
+	"Maze.helpPlay22": "Think how many steps you must do before turning left? How many steps you do now?",
 	"Maze.helpLevel3": "Put the right block between the two move forward blocks in order to help me reach the goal.",
-	"Maze.helpPlay31": "Think how many 'move forward' blocks we must have before 'turn left' block. How many times does your character moves forward now?",
+	"Maze.helpPlay31": "One 'repeat' block can be stucked inside an other.",
+	"Maze.helpPlay32": "How many steps should your character do in order to cross the whole path? How many 'move forward' blocks must be stacked together? In which of the two 'repeat' blocks you have to change the number?",
 	"Maze.helpLevel4": "Correct the block options if needed and put the right statements in the if-else block in order to help me reach my goal.",
 	"Maze.helpPlay41": "Your character must move forward. If path is to the right, character must turn right, if path is to the left character must turn left.",
 	"Maze.helpLevel5": "Correct the block options in order to help me reach my goal.",
