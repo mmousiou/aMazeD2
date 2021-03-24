@@ -21,7 +21,7 @@
     // (case-insensitive) or identical to the one in this file (not
     // recommended), or an error will be raised during generation of qqq.json.
     // The source-language text in the applications' definitions is ignored.
-    <span id="Games_name">{msg meaning="Games.name" desc="The project name."}About{/msg}</span>
+    <span id="Games_name">{msg meaning="Games.name" desc="The project name."}mazeGame{/msg}</span>
     <span id="Games_puzzle">{{msg meaning="Games.puzzle" desc="title - Specifies that this is Blockly's '''Puzzle''' game.  Use the word for a jigsaw puzzle.\n{lb}{lb}Identical|Puzzle{rb}{rb}"}}Puzzle{{/msg}}</span>
     <span id="Games_maze">{{msg meaning="Games.maze" desc="title - Specifies that this is Blockly's '''Maze''' game.\n{lb}{lb}Identical|Maze{rb}{rb}"}}Maze{{/msg}}</span>
     <span id="Games_bird">{{msg meaning="Games.bird" desc="title - Specifies that this is Blockly's '''Bird''' game.\n{lb}{lb}Identical|Bird{rb}{rb}"}}Bird{{/msg}}</span>
@@ -134,9 +134,9 @@
     {else}
       <a href="./?lang={$ij.lang}">
     {/if}
-      {msg meaning="Games.name" desc="IBID"}About{/msg}
+      {msg meaning="Games.name" desc="IBID"}mazeGame{/msg}
     </a>
-    {sp} {sp}
+    {sp}:{sp}
     {$appName}
   </span>
 {/template}

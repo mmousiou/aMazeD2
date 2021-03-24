@@ -46,7 +46,7 @@
   {call .messages /}
   {call BlocklyGames.soy.headerBar}
     {param appName}
-      {msg meaning="Games.maze" desc="IBID"}MazeGame{/msg}
+      {msg meaning="Games.maze" desc="IBID"} Αρχική {/msg}
     {/param}
     {param levelLinkSuffix}skin={$ij.skin}{/param}
     {param hasLinkButton: true /}
@@ -124,7 +124,7 @@
   {if $ij.level == 1} // αρχή ιf επιλογή επιπέδου για οδηγίες και βοήθεια
   // oδηγίες επιπέδου 1
   <div id="dialogHelpLevel1" class="dialogHiddenContent">
-        {msg meaning="Maze.helpLevel1" desc="callout - Introduction to level 1."}In this level you have to correct the blocks in order to help me cross the path!!{/msg}
+        {msg meaning="Maze.helpLevel1" desc="callout - Introduction to level 1."}Put the blocks in the workspace in order your character to reach the goal through the path.With play button you can animate your moves. With submit button you store your result whether it's right or wrong.{/msg}
     </div>
   //επίπεδο 1 βοήθεια αυτόματα
 <div id="dialogHelpStack" class="dialogHiddenContent">
@@ -159,14 +159,14 @@
   {elseif $ij.level == 2}
   // oδηγίες επιπέδου 2
   <div id="dialogHelpLevel2" class="dialogHiddenContent">
-        {msg meaning="Maze.helpLevel2" desc="callout - Introduction to level 2."}In this level you have to correct the options of the blocks in order to help me cross the path!!{/msg}
+        {msg meaning="Maze.helpLevel2" desc="callout - Introduction to level 2."}Put the blocks in the workspace in order your character to reach the goal through the path. With play button you can animate your moves. With submit button you store your result whether it's right or wrong.{/msg}
     </div>
   // επίπεδο 2 βοήθεια στην αρχή
     <div id="dialogHelpPlay21" class="dialogHiddenContent">
       <table><tr><td valign="top">
         <img src="maze/help.png">
         </td><td>&nbsp;</td><td valign="top">
-        {msg meaning="Maze.helpPlay21" desc="callout - Help message when a player uses play button once."}The 'repeat' block is used in order to execute the code of the inner blocks as many times as the number of the repeat choice.{/msg}
+        {msg meaning="Maze.helpPlay21" desc="callout - Help message when a player uses play button once."}Think how many 'move forward' blocks must be stacked in order to help me reach my goal.{/msg}
         {call BlocklyGames.soy.ok /}
       </td></tr>
       </table>
@@ -176,7 +176,7 @@
       <table><tr><td valign="top">
         <img src="maze/help.png">
         </td><td>&nbsp;</td><td valign="top">
-        {msg meaning="Maze.helpPlay22" desc="callout - Help message when a player uses play button twice."}Think how many steps you must do before turning left? How many steps you do now?{/msg}
+        {msg meaning="Maze.helpPlay22" desc="callout - Help message when a player uses play button twice."}Think how many turns you must have in order to help me reach my goal.{/msg}
         {call BlocklyGames.soy.ok /}
       </td></tr>
       </table>
@@ -185,32 +185,24 @@
   {elseif $ij.level == 3}
   // oδηγίες επιπέδου 3
   <div id="dialogHelpLevel3" class="dialogHiddenContent">
-        {msg meaning="Maze.helpLevel3" desc="callout - Introduction to level 3."}Put the right block between the two move forward blocks in order to help me reach the goal.{/msg}
+        {msg meaning="Maze.helpLevel3" desc="callout - Introduction to level 3."}Put the blocks in the workspace in order your character to reach the goal through the path.With play button you can animate your moves. With submit button you store your result whether it's right or wrong.{/msg}
     </div>
     // επίπεδο 3 βοήθεια στην αρχή του επιπέδου
     <div id="dialogHelpPlay31" class="dialogHiddenContent">
       <table><tr><td valign="top">
         <img src="maze/help.png">
         </td><td>&nbsp;</td><td valign="top">
-        {msg meaning="Maze.helpPlay31" desc="callout - Help message at the start of the level."}One 'repeat' block can be stucked inside an other.{/msg}
+        {msg meaning="Maze.helpPlay31" desc="callout - Help message at the start of the level."}Think how many 'move forward' blocks we must have before 'turn left' block. How many times does your character moves forward now?{/msg}
         {call BlocklyGames.soy.ok /}
       </td></tr>
       </table>
     </div>
-    <div id="dialogHelpPlay32" class="dialogHiddenContent">
-      <table><tr><td valign="top">
-        <img src="maze/help.png">
-        </td><td>&nbsp;</td><td valign="top">
-        {msg meaning="Maze.helpPlay32" desc="callout - Help message when a player uses play button twice."}How many steps should your character do in order to cross the whole path? How many 'move forward' blocks must be stacked together? In which of the two 'repeat' blocks you have to change the number?{/msg}
-        {call BlocklyGames.soy.ok /}
-      </td></tr>
-      </table>
-    </div>
+    
 // **********************************Επίπεδο 4***************************************************
   {elseif $ij.level == 4}
   // oδηγίες επιπέδου 4
   <div id="dialogHelpLevel4" class="dialogHiddenContent">
-        {msg meaning="Maze.helpLevel4" desc="callout - Introduction to level 4."}Correct the block options if needed and put the right statements in the if-else block in order to help me reach my goal.{/msg}
+        {msg meaning="Maze.helpLevel4" desc="callout - Introduction to level 4."}Put the blocks in the workspace in order your character to reach the goal through the path.With play button you can animate your moves. With submit button you store your result whether it's right or wrong.{/msg}
     </div>
     // επίπεδο 4 κουμπί play βοήθεια
     <div id="dialogHelpPlay41" class="dialogHiddenContent">
@@ -227,7 +219,7 @@
   {elseif $ij.level == 5}
   // oδηγίες επιπέδου 5
   <div id="dialogHelpLevel5" class="dialogHiddenContent">
-        {msg meaning="Maze.helpLevel5" desc="callout - Introduction to level 5."}Correct the block options in order to help me reach my goal.{/msg}
+        {msg meaning="Maze.helpLevel5" desc="callout - Introduction to level 5."}Put the blocks in the workspace in order your character to reach the goal through the path.With play button you can animate your moves. With submit button you store your result whether it's right or wrong.{/msg}
     </div>
     // επίπεδο 5 κουμπί play βοήθεια
     <div id="dialogHelpPlay51" class="dialogHiddenContent">
@@ -244,7 +236,7 @@
   {elseif $ij.level == 6}
   // oδηγίες επιπέδου 6
   <div id="dialogHelpLevel6" class="dialogHiddenContent">
-        {msg meaning="Maze.helpLevel6" desc="callout - Introduction to level 6."}Fill the else statement with the right block in order to help me reach my goal.{/msg}
+        {msg meaning="Maze.helpLevel6" desc="callout - Introduction to level 6."}Put the blocks in the workspace in order your character to reach the goal through the path.With play button you can animate your moves. With submit button you store your result whether it's right or wrong.{/msg}
     </div>
     // επίπεδο 6 κουμπί play βοήθεια
     <div id="dialogHelpPlay61" class="dialogHiddenContent">
@@ -261,7 +253,7 @@
   {elseif $ij.level == 7}
   // oδηγίες επιπέδου 7
   <div id="dialogHelpLevel7" class="dialogHiddenContent">
-        {msg meaning="Maze.helpLevel7" desc="callout - Introduction to level 7."}Use the right blocks in order to help reach my goal.{/msg}
+        {msg meaning="Maze.helpLevel7" desc="callout - Introduction to level 7."}Put the blocks in the workspace in order your character to reach the goal through the path.With play button you can animate your moves. With submit button you store your result whether it's right or wrong.{/msg}
     </div>
     // επίπεδο 7 κουμπί play βοήθεια
     <div id="dialogHelpPlay71" class="dialogHiddenContent">
@@ -420,11 +412,8 @@
     <block type="maze_moveForward"></block>
     <block type="maze_turn"><field name="DIR">turnLeft</field></block>
     <block type="maze_turn"><field name="DIR">turnRight</field></block>
-    {if $ij.level != 6}
-      <block type="maze_if"></block>
-      {if $ij.level > 6}
-        <block type="maze_if"><field name="DIR">isPathLeft</field></block>
-        //add repeat n times
+    {if $ij.level == 3 or $ij.level == 7}
+    //add repeat n times
         <block type="controls_repeat_ext">
                 <value name="TIMES">
                   <shadow type="math_number">
@@ -432,7 +421,12 @@
                   </shadow>
                 </value>
         </block>
-        <block type="maze_forever"></block>
+      {/if}
+    {if $ij.level >= 4 or $ij.level == 2}
+      <block type="maze_if"></block>
+      <block type="maze_forever"></block>
+       <block type="maze_if"><field name="DIR">isPathLeft</field></block>
+      {if $ij.level > 6}
         <block type="maze_ifElse"></block>
       {/if}
     {/if}

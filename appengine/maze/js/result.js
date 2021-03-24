@@ -68,7 +68,9 @@ for (let i = 0; i < levelData.length; i++) {
     console.log(data);
     let code = window.localStorage.getItem(codeLevel);
     if (data) levelData[i] = data;
-    document.getElementById(playid).textContent = levelData[i].Ub;
+    //όταν αλλάζω τη βοήθεια αλλάζει το όνομα του μετρητή σοκ!! Να ελέγχεις πάντα από κονσόλα το όνομα
+    document.getElementById(playid).textContent = levelData[i].Vf;
+    console.log(levelData[i].Vf);
     document.getElementById(timeid).textContent = levelData[i].time;
     if (levelData[i].result == 'Failure') {
         result = 'Αποτυχία';
