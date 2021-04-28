@@ -1,0 +1,160 @@
+button.primary {
+    /* Can't use "text-align: start" due to IE. */
+    text-align: left;
+}
+
+html[dir="RTL"] button.primary {
+    text-align: right;
+}
+
+#blockly {
+    position: fixed;
+    bottom: 10px;
+}
+
+#visualization {
+    position: relative;
+}
+
+#display {
+    border: 1px solid #ccc;
+}
+
+#downloadImageLink {
+    display: none;
+}
+
+#sampleHelp3,
+#sampleHelp4 {
+    height: 50px;
+    width: 250px;
+}
+
+
+/* Slider. */
+
+.sliderTrack {
+    stroke: #aaa;
+    stroke-width: 6px;
+    stroke-linecap: round;
+}
+
+.sliderKnob {
+    fill: #ddd;
+    stroke: #bbc;
+    stroke-width: 1px;
+    stroke-linejoin: round;
+}
+
+.sliderKnob:hover {
+    fill: #eee;
+}
+
+
+/* από maze */
+
+#outcome {
+    position: relative;
+    text-align: left;
+    vertical-align: top;
+    width: 380px;
+    height: fit-content;
+    background-color: rgba(240, 250, 185);
+    margin-bottom: 5px;
+    margin-top: 10px;
+    border-radius: 1rem;
+    padding: 10px;
+    box-shadow: 2px 2px 5px #888;
+}
+
+.outcome__label {
+    font-family: "Courier New", Courier, monospace;
+    color: #333;
+    font-size: 16px;
+    padding: 0px;
+    margin: 3px;
+    font-weight: 500;
+}
+
+.outcome__label>span {
+    font-size: 16px;
+    font-weight: normal;
+    color: #333;
+}
+
+#header2 {
+    position: relative;
+    text-align: left;
+    width: 600px;
+    height: 70px;
+    margin-bottom: 5px;
+    padding: 10px;
+}
+
+.header-help {
+    padding: 0px;
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+#capacityBubble {
+    position: absolute;
+    margin-bottom: -0.4em;
+    left: 15px;
+    top: 165px;
+    width: 380px;
+}
+
+html[dir="RTL"] #capacityBubble {
+    left: auto;
+    right: 10px;
+}
+
+#capacity {
+    display: inline;
+    /* changed from none */
+    color: #fff;
+    padding: 5px 1em;
+    border-radius: 15px;
+    background-color: rgba(64, 64, 64, 0.7);
+    font-size: large;
+}
+
+.capacityNumber {
+    font-weight: bold;
+}
+
+#runButton {
+    border: 1px solid #1cdf36;
+    background-color: #1cdf36;
+    color: #fff;
+}
+
+#resetButton {
+    border: 1px solid #dd4b39;
+    background-color: #dd4b39;
+    color: #fff;
+}
+
+#submitButton {
+    border: 1px solid #501cdf;
+    background-color: #501cdf;
+    color: #fff;
+}
+
+#help-ins {
+    color: #501cdf;
+    padding: 0px;
+    margin-bottom: 0px;
+    margin-top: 7px;
+}
+
+#msgSuccess {
+    display: none;
+    color: rgb(0, 255, 34);
+}
+
+#msgFail {
+    display: none;
+    color: red;
+}

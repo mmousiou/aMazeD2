@@ -21,8 +21,27 @@ a:hover {
     text-align: right;
 }
 
+#helpButton {
+    color: rgb(255, 255, 255);
+    width: 25%;
+    height: 30px;
+    padding: 0px;
+    margin: 0px;
+    font-size: medium;
+    background-color: rgba(166, 118, 180, 0.548);
+}
+
 #header_cta>* {
     vertical-align: middle;
+}
+
+#header_title>* {
+    vertical-align: middle;
+}
+
+#title {
+    padding-top: 30px;
+    padding-right: 10px;
 }
 
 html[dir="RTL"] .farSide {

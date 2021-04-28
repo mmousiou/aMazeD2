@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="el">
 
 <head>
     <meta charset="utf-8" />
@@ -40,7 +40,7 @@
     <!-- navbar -->
     <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="maze.html">
-            <img src="common/mylogo.png" alt="mazeGame">
+            <img src="images/logo_amazed.png" width="120" alt="mazeGame">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent1">
@@ -65,7 +65,7 @@
                     <div class="col-12">
                         <h3>Πληροφορίες</h3>
                         <hr />
-                        <p> Το mazeGame είναι ένα εκπαιδευτικό παιχνίδι που δημιουργήθηκε με τη χρήση της βιβλιοθήκης <a href='https://developers.google.com/blockly' target="_blank">Blockly</a> και την επέκταση της λειτουργικότητας των παιχνιδιών <a href="https://blockly.games/"
+                        <p> Το aMazeD είναι ένα εκπαιδευτικό παιχνίδι που δημιουργήθηκε με τη χρήση της βιβλιοθήκης <a href='https://developers.google.com/blockly' target="_blank">Blockly</a> και την επέκταση της λειτουργικότητας των παιχνιδιών <a href="https://blockly.games/"
                                 target="_blank">Blockly Games.</a></p>
                         <p>Ο κώδικας του παιχνιδιού είναι διαθέσιμος στο <a href="https://github.com/mmousiou/mazeWithComments" target="_blank">GitHub</a> .</p>
                     </div>
@@ -77,6 +77,16 @@
                 <h4>Λειτουργικότητα παιχνιδιού</h4>
                 <hr />
                 <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <p>Το παιχνίδι αποτελείται από 10 επίπεδα τα οποία χωρίζονται σε δυο κατηγορίες.</p>
+                            <ul>
+                                <li>Τα επίπεδα 1-6 συνθέτουν την πρώτη κατηγορία του παιχνιδιού που είναι ένας Λαβύρινθος. Ο παίκτης με την κατάλληλη επιλογή block πρέπει να δημιουργήσει ένα πρόγραμμα για να φτάσει ο χαρακτήρας στο τέλος του λαβυρίνθου.</li>
+                                <li> Τα επίπεδα 7-10 συνθέτουν την δεύτερη κατηγορία του παιχνιδιού που είναι η Ζωγραφική. Ο παίκτης πρέπει με την κατάλληλη επιλογή block να δημιουργήσει ένα πρόγραμμα που θα σχεδιάσει το ζητούμενο σχήμα.</li>
+                            </ul>
+                            <p> Για τον έλεγχο και του κώδικα και την υποβολή απάντησης ο χρήστης έχει στην διάθεσή του τα ακόλουθα κουμπιά:</p>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-lg-4 col-md-6 col-sm-12 text-center">
                             <img class="rounded" alt="play" src="images/play.png" data-holder-rendered="true">
@@ -143,7 +153,7 @@
                             <li class="media">
                                 <img class="mr-2" src="images/repeat.png" alt="Generic placeholder image" />
                                 <div class="media-body">
-                                    <h5 class="mt-1 mb-0">Επανέλαβε 3/4/5 φορές</h5>
+                                    <h5 class="mt-1 mb-0">Επανέλαβε ν-φορές</h5>
                                     Επαναλαμβάνεται το block μέσα στο "κάνε" όσες φορές επιλέγει ο χρήστης.
                                 </div>
                             </li>
@@ -154,6 +164,33 @@
                                 <div class="media-body">
                                     <h5 class="mt-2 mb-0">Επανέλαβε μέχρι...τέρμα</h5>
                                     Επαναλαμβάνεται το block στο "κάνε" μέχρι να φτάσει ο παίκτης στο τέρμα.
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="list-unstyled" style="padding-top: 10px">
+                            <li class="media">
+                                <img class="mr-2" src="images/draw_move_forward.png" alt="Generic placeholder image" />
+                                <div class="media-body">
+                                    <h5 class="mt-0 mb-0">Κινήσου μπροστά κ-pixel </h5>
+                                    Το πινέλο κινείται μπροστά κατά το ορισμένο ποσό (οι μονάδες μέτρησης είναι σε pixel).
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="list-unstyled" style="padding-top: 10px">
+                            <li class="media">
+                                <img class="mr-2" src="images/draw_turn.png" alt="Generic placeholder image" />
+                                <div class="media-body">
+                                    <h5 class="mt-0 mb-0">Στρίψε δεξιά/αριστερά κατά μ-μοίρες </h5>
+                                    Το πινέλο στρίβει δεξιά/αριστερά ανάλογα με την επιλογή του χρήστη τόσες μοίρες όσες επιλέγει ο χρήστης από το δεύτερο πτυσσόμενο μενού επιλογής.
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="list-unstyled" style="padding-top: 10px">
+                            <li class="media">
+                                <img class="mr-2" src="images/draw_color.png" alt="Generic placeholder image" />
+                                <div class="media-body">
+                                    <h5 class="mt-0 mb-0">Κάνε το χρώμα... </h5>
+                                    Αλλάζει το χρώμα του πινέλου ανάλογα με την επιλογή του χρήστη.
                                 </div>
                             </li>
                         </ul>
@@ -197,7 +234,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12">
-                        <p>Copyright © mmousiou. All rights reserved.</p>
+                        <p>Copyright ©2021 mmousiou. All rights reserved.</p>
                     </div>
                 </div>
             </div>

@@ -20,7 +20,7 @@ goog.require('Index.soy');
 /**
  * Array of application names.
  */
-Index.APPS = ['maze'];
+Index.APPS = ['maze', 'turtle'];
 
 /**
  * Initialize Blockly and the maze.  Called on page load. Τροποποιήθηκε για να έχει μόνο το maze app

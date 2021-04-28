@@ -27,18 +27,23 @@ goog.require('Maze.soy');
 
 BlocklyGames.NAME = 'maze';
 
+//Το παιχνίδι έχει 6 επίπεδα
+
+
 /**
  * Go to the next level.  Add skin parameter.
  * @suppress {duplicate}
  */
+
+//άλλαξα το nextLevel για να σε στέλντει μετά το 6ο level στο turtle, αφαίρεσα από παντού το BocklyGames.maxlevel 
 BlocklyInterface.nextLevel = function() {
-    if (BlocklyGames.LEVEL < BlocklyGames.MAX_LEVEL) {
+    if (BlocklyGames.LEVEL < 6) {
         window.location = window.location.protocol + '//' +
             window.location.host + window.location.pathname +
             '?lang=' + BlocklyGames.LANG + '&level=' + (BlocklyGames.LEVEL + 1) +
             '&skin=' + Maze.SKIN_ID;
-    } else {
-        BlocklyInterface.indexPage();
+    } else if (BlocklyGames.LEVEL == 6) {
+        BlocklyInterface.turtlePage();
     }
 };
 
@@ -103,13 +108,13 @@ Maze.SKIN = Maze.SKINS[Maze.SKIN_ID];
 
 //για να επιλεχθεί το σωστό level-skin στο όταν φορτώνει
 
-for (var i = 0; i < BlocklyGames.MAX_LEVEL; i++) {
+for (var i = 0; i < 6; i++) {
     if (!BlocklyGames.loadFromLocalStorage(BlocklyGames.NAME, i + 1)) {
         BlocklyGames.LEVEL = i + 1;
         break;
         // αν και το τελευταίο επίπεδο έχει ολοκληρωθεί τότε θα εμφανιστεί μήνυμα ολοκλήρωσης παιχνιδιού (ο κώδικας είναι εκτός της συνάρτησης στο if για τις οδηγίες του τελευταίου επιπέδου) , αν δεν βάλουμε τη συνθήκη που ακολουθεί πέφτει σε λούπα
-    } else if (!!BlocklyGames.loadFromLocalStorage(BlocklyGames.NAME, BlocklyGames.MAX_LEVEL)) {
-        BlocklyGames.LEVEL = BlocklyGames.MAX_LEVEL;
+    } else if (!!BlocklyGames.loadFromLocalStorage(BlocklyGames.NAME, 6)) {
+        BlocklyGames.LEVEL = 6;
     }
 }
 
@@ -209,17 +214,6 @@ Maze.map = [
         [0, 0, 0, 0, 1, 0, 0, 0],
         [2, 1, 1, 1, 1, 0, 0, 0]
     ],
-    // Level 7.
-    [
-        [0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 2, 1, 1, 1, 1, 3, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0],
-        [0, 0, 0, 0, 0, 0, 0, 0]
-    ],
 ][BlocklyGames.LEVEL];
 
 /**
@@ -284,13 +278,6 @@ Maze.levelData = [{
         result: "",
         score: 0,
     },
-    {
-        name: "Επίπεδο 7",
-        countPlay: 0,
-        time: "0",
-        result: "",
-        score: 0,
-    }
 ];
 
 var totalScore = 0;
@@ -508,7 +495,7 @@ Maze.init = function() {
     document.body.innerHTML = Maze.soy.start({}, null, {
         lang: BlocklyGames.LANG,
         level: BlocklyGames.LEVEL,
-        maxLevel: 7,
+        maxLevel: 10,
         skin: Maze.SKIN_ID,
         html: BlocklyGames.IS_HTML
     });
@@ -533,7 +520,7 @@ Maze.init = function() {
     var data4 = JSON.parse(window.localStorage.getItem("maze_level4"));
     var data5 = JSON.parse(window.localStorage.getItem("maze_level5"));
     var data6 = JSON.parse(window.localStorage.getItem("maze_level6"));
-    var data7 = JSON.parse(window.localStorage.getItem("maze_level7"));
+
 
     if (data1) Maze.levelData[0] = data1;
     if (data2) Maze.levelData[1] = data2;
@@ -541,11 +528,11 @@ Maze.init = function() {
     if (data4) Maze.levelData[3] = data4;
     if (data5) Maze.levelData[4] = data5;
     if (data6) Maze.levelData[5] = data6;
-    if (data7) Maze.levelData[6] = data7;
+
 
     console.log(Maze.levelData);
     totalScore = Maze.levelData[0].score +
-        Maze.levelData[1].score + Maze.levelData[2].score + Maze.levelData[3].score + Maze.levelData[4].score + Maze.levelData[5].score + Maze.levelData[6].score;
+        Maze.levelData[1].score + Maze.levelData[2].score + Maze.levelData[3].score + Maze.levelData[4].score + Maze.levelData[5].score;
     window.localStorage.setItem('total-score', totalScore);
     document.querySelector(".outcome__value--total__score").textContent = window.localStorage.getItem('total-score');
 
@@ -700,29 +687,22 @@ Maze.init = function() {
             // Level 10 gets an introductory modal dialog.
             // Skip the dialog if the user has already won.
             document.querySelector(".header-help").textContent = document.getElementById('dialogHelpLevel6').textContent;
-        }
-    }
-    if (BlocklyGames.LEVEL == 7) {
-        if (!BlocklyGames.loadFromLocalStorage(BlocklyGames.NAME,
-                BlocklyGames.LEVEL)) {
-            // Level 10 gets an introductory modal dialog.
-            // Skip the dialog if the user has already won.
-            document.querySelector(".header-help").textContent = document.getElementById('dialogHelpLevel7').textContent;
         } else {
-            //εντολή else για τελευταίο επίπεδο! 
-            var content = document.getElementById('dialogMazeDone');
-            var style = {
-                'width': '30%',
-                'left': '35%',
-                'top': '12em'
-            };
-            BlocklyDialogs.showDialog(content, null, false, true, style,
-                BlocklyDialogs.stopDialogKeyDown);
-            BlocklyDialogs.startDialogKeyDown();
-            //περίμενε 5 δευτερόλεπτα και άλλαξε level
-            setTimeout(BlocklyInterface.indexPage, 3000);
+            // //εντολή else για τελευταίο επίπεδο! 
+            // var content = document.getElementById('dialogMazeDone');
+            // var style = {
+            //     'width': '30%',
+            //     'left': '35%',
+            //     'top': '12em'
+            // };
+            // BlocklyDialogs.showDialog(content, null, false, true, style,
+            //     BlocklyDialogs.stopDialogKeyDown);
+            // BlocklyDialogs.startDialogKeyDown();
+            // //περίμενε 1 δευτερόλεπτα και άλλαξε level
+            setTimeout(BlocklyInterface.turtlePage, 1000);
         }
     }
+
     //======================================================================================================
 
     // Περιμένουμε 5 δευτερόλεπτα για το maze level help
@@ -879,7 +859,7 @@ Maze.runButtonClick = function(e) {
     // 
 
     Maze.levelData[BlocklyGames.LEVEL - 1].countPlay += 1;
-    document.querySelector(".outcome__value--play").textContent = Maze.levelData[i].countPlay;
+    document.querySelector(".outcome__value--play").textContent = Maze.levelData[BlocklyGames.LEVEL - 1].countPlay;
 
 
     console.log(Maze.levelData);

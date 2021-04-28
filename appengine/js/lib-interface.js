@@ -212,13 +212,23 @@ BlocklyInterface.saveToLocalStorage = function() {
     window.localStorage[name] = BlocklyInterface.executedCode;
 };
 
+
+
 /**
- * Go to the index page.
+ * Go to the results page.
  */
 BlocklyInterface.indexPage = function() {
-    window.location = 'results.html';
+    window.location = 'results-' + BlocklyGames.LANG + '.html';
     // (BlocklyGames.IS_HTML ? 'index.html' : './') +
     //     '?lang=' + BlocklyGames.LANG;
+};
+
+/**
+ * Go to the draw game.
+ */
+BlocklyInterface.turtlePage = function() {
+    window.location = 'turtle.html' + '?lang=' + BlocklyGames.LANG;
+    // (BlocklyGames.IS_HTML ? 'index.html' : './') 
 };
 
 /**

@@ -1,49 +1,49 @@
 'use strict';
 
 const levelData = [{
-        name: "Επίπεδο 1",
+        name: "Level 1",
         runClick: 0,
         time: "0",
         result: "",
         score: 0,
         code: ""
     }, {
-        name: "Επίπεδο 2",
+        name: "Level 2",
         runClick: 0,
         time: "0",
         result: "",
         score: 0,
         code: ""
     }, {
-        name: "Επίπεδο 3",
+        name: "Level 3",
         runClick: 0,
         time: "0",
         result: "",
         score: 0,
         code: ""
     }, {
-        name: "Επίπεδο 4",
+        name: "Level 4",
         runClick: 0,
         time: "0",
         result: "",
         score: 0,
         code: ""
     }, {
-        name: "Επίπεδο 5",
+        name: "Level 5",
         runClick: 0,
         time: "0",
         result: "",
         score: 0,
         code: ""
     }, {
-        name: "Επίπεδο 6",
+        name: "Level 6",
         runClick: 0,
         time: "0",
         result: "",
         score: 0,
         code: ""
     }, {
-        name: "Επίπεδο 7",
+        name: "Level 7",
         runClick: 0,
         time: "0",
         result: "",
@@ -51,7 +51,7 @@ const levelData = [{
         code: ""
     },
     {
-        name: "Επίπεδο 8",
+        name: "Level 8",
         runClick: 0,
         time: "0",
         result: "",
@@ -59,7 +59,7 @@ const levelData = [{
         code: ""
     },
     {
-        name: "Επίπεδο 9",
+        name: "Level 9",
         runClick: 0,
         time: "0",
         result: "",
@@ -67,7 +67,7 @@ const levelData = [{
         code: ""
     },
     {
-        name: "Επίπεδο 10",
+        name: "Level 10",
         runClick: 0,
         time: "0",
         result: "",
@@ -104,12 +104,7 @@ for (let i = 0; i < levelData.length; i++) {
     }
     console.log(levelData[i].Vf);
     document.getElementById(timeid).textContent = levelData[i].time;
-    if (levelData[i].result == 'Failure') {
-        result = 'Αποτυχία';
-    } else {
-        result = 'Επιτυχία';
-    }
-    document.getElementById(resultid).textContent = result;
+    document.getElementById(resultid).textContent = levelData[i].result;
 
 
     // για να εμφανίσει σωστά τον κώδικα!!!
@@ -130,7 +125,7 @@ console.log(levelData);
 // κουμπί για μετάβαση σε νέο παιχνίδι και καθαρισμό δεδομένων 
 document.getElementById("clear").addEventListener("click", function() {
     window.localStorage.clear();
-    window.location = "maze.html";
+    window.location = "maze.html" + "?lang=en";
 });
 
 // ανάκτηση στοιχείων Φόρμας 
@@ -204,6 +199,6 @@ const labelDate = new Intl.DateTimeFormat(
 
 const getName = window.localStorage.getItem('name');
 const getEmail = window.localStorage.getItem('email');
-const capTxt = 'Στοιχεία χρήστη --> Ονοματεπώνυμο: ' + getName + ' , e-mail: ' + getEmail + ' , Score: ' + totalScore + ' , Ημερ/νια: ' + labelDate;
+const capTxt = 'User data --> Name: ' + getName + ' , e-mail: ' + getEmail + ' , Score: ' + totalScore + ' , Date: ' + labelDate;
 console.log(capTxt);
 document.getElementById('caption--text').innerHTML = capTxt;

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.3.1.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f3f3f3;
+        }
+        
+        .info {
+            padding: 20px;
+            background-color: #4981fa;
+            color: white;
+        }
+        
+        .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .closebtn:hover {
+            color: black;
+        }
+    </style>
+    <title>About</title>
+</head>
+
+<body>
+    <!-- navbar -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="maze.html">
+            <img src="images/logo_amazed.png" width="120" alt="mazeGame">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent1" aria-controls="navbarSupportedContent1" aria-expanded="false" aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item"><a class="nav-link" href="maze.html">Back to Game</a></li>
+                <li class="nav-item "><a class="nav-link" href="#info">Information</a></li>
+                <li class="nav-item"><a class="nav-link" href="#functionality">Functionality</a></li>
+                <li class="nav-item"><a class="nav-link" href="#blocks">Blocks</a></li>
+                <li class="nav-item"><a class="nav-link" href="#results">Results</a></li>
+            </ul>
+        </div>
+    </nav>
+    <header>
+    </header>
+
+    <div class="container">
+        <!-- main -->
+        <main>
+
+            <section id="info" style="padding-top: 80px">
+                <div class="row">
+                    <div class="col-12">
+                        <h3>Information</h3>
+                        <hr />
+                        <p> <b>aMazeD</b> is an educational game, developed using <a href='https://developers.google.com/blockly' target="_blank">Blockly</a> library and <a href="https://blockly.games/" target="_blank">Blockly Games.</a></p>
+                        <p>Game's code is open and free to use on <a href="https://github.com/mmousiou/mazeWithComments" target="_blank">GitHub</a> .</p>
+                    </div>
+                </div>
+            </section>
+
+
+            <section id="functionality" style="padding-top: 80px">
+                <h4>Functionality</h4>
+                <hr />
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <p>Game consists of two basic categories.</p>
+                            <ul>
+                                <li>Levels 1-6 are the first category based on maze game. Player must move the character through the selected path with the use of blocks.</li>
+                                <li> Levels 7-10 are the second category of the games based on Turtle game. Player must use the blocks in order to draw the shape.</li>
+                            </ul>
+                            <p> To execute and correct the answers the player has the following buttons:</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 col-sm-12 text-center">
+                            <img class="rounded" alt="play" src="images/en/play.png" data-holder-rendered="true">
+                            <h5>Button "Play"</h5>
+                            <p>With this button you can execute the code and see the results of the animation. If the code is incorrect you have to use "reset" button.</p>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 text-center">
+                            <img class="rounded" alt="reset" src="images/en/reset.png" data-holder-rendered="true">
+                            <h5>Button "Reset"</h5>
+                            <p>With this button you don't execute the code and your character returns to the starting point. </p>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 text-center">
+                            <img class="rounded" alt="submit" src="images/en/submit.png" data-holder-rendered="true">
+                            <h5>Button "Submit"</h5>
+                            <p>With this button you can execute the code, check the result and save it. Whether the result is right or wrong you will be redirected to the next level. </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="blocks" style="padding-top: 80px">
+                <h4>Blocks</h4>
+                <hr />
+                <div class="container mt-12 col-12">
+                    <div class="row justify-content-lg-start">
+                        <ul class="list-unstyled col-12" style="padding-top: 10px">
+                            <li class="media">
+                                <img class="mr-2" src="images/en/move_forward.png" alt="Generic placeholder image" />
+                                <div class="media-body">
+                                    <h5 class="mt-0 mb-0">Move forward</h5>
+                                    Moves the player forward one step.
+                                </div>
+                            </li>
+                        </ul>
+                        <br />
+                        <ul class="list-unstyled col-12" style="padding-top: 10px">
+                            <li class="media">
+                                <img class="mr-2" src="images/en/turn_left.png" alt="Generic placeholder image" />
+                                <div class="media-body">
+                                    <h5 class="mt-0 mb-0">Turn left/right</h5>
+                                    Turns the player left or right by 90 degrees.
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="list-unstyled col-12" style="padding-top: 10px">
+                            <li class="media">
+                                <img class="mr-2" src="images/en/if_path.png" alt="Generic placeholder image" />
+                                <div class="media-body">
+                                    <h5 class="mt-0 mb-0">If path ahead/to the left/to the right </h5>
+                                    If there is path in the specified direction, then do some actions. For example if the do statement has the block "move forward" the the character will move on step forward every time there is a path (ahead/to the left/to the right) depending on the specified
+                                    direction.
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="list-unstyled col-12" style="padding-top: 10px">
+                            <li class="media">
+                                <img class="mr-2" src="images/en/if_path_else.png" alt="Generic placeholder image" />
+                                <div class="media-body">
+                                    <h5 class="mt-1 mb-0">If path ahead/to the left/to the right do..(statement)..else..(else statement)</h5>
+                                    If there is a path in the specified direction, then do the first block of actions. Otherwise, do the second block of actions.
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="list-unstyled col-12" style="padding-top: 10px">
+                            <li class="media">
+                                <img class="mr-2" src="images/en/repeat.png" alt="Generic placeholder image" />
+                                <div class="media-body">
+                                    <h5 class="mt-1 mb-0">Repeat n-times</h5>
+                                    Do some statement several times.
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="list-unstyled col-12" style="padding-top: 10px">
+                            <li class="media">
+                                <img class="mr-2" src="images/en/maze_forever.png" alt="Generic placeholder image" />
+                                <div class="media-body">
+                                    <h5 class="mt-2 mb-0">repeat until...finish</h5>
+                                    Repeat enlosed actions until finish point is reached.
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="list-unstyled col-12" style="padding-top: 10px">
+                            <li class="media">
+                                <img class="mr-2" src="images/en/draw_move_forward.png" alt="Generic placeholder image" />
+                                <div class="media-body">
+                                    <h5 class="mt-0 mb-0">Move forward/backward by k-pixel </h5>
+                                    Moves the brush forward or backward by the specified pixels.
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="list-unstyled col-12" style="padding-top: 10px">
+                            <li class="media">
+                                <img class="mr-2" src="images/en/draw_turn.png" alt="Generic placeholder image" />
+                                <div class="media-body">
+                                    <h5 class="mt-0 mb-0">Turn right by/left by μ degrees </h5>
+                                    Turns the brush left or right by the specified number of degrees.
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="list-unstyled col-12" style="padding-top: 10px">
+                            <li class="media">
+                                <img class="mr-2" src="images/en/draw_color.png" alt="Generic placeholder image" />
+                                <div class="media-body">
+                                    <h5 class="mt-0 mb-0">Set color to... </h5>
+                                    Changes the color of the brush.
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section id="results" style="padding-top: 80px">
+                <div class="row">
+                    <div class="col-12">
+                        <h3>Results</h3>
+                        <hr />
+                        <p>When the 10th level is completed the game redirects to the results page with the score and the data of all levels. Users can see their results after entering name,surname and a valid e-mail account. </p>
+                        <div class="info">
+                            <span class='closebtn' onclick="this.parentElement.style.display='none';">&times;</span> User data is used only locally for statistical reasons. With the option "New Game" all data is deleted permanently.
+                        </div>
+                    </div>
+            </section>
+        </main>
+        </div>
+
+
+        <footer style="padding-top: 80px" class="text-center">
+            <hr />
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+
+                        <img class="rounded mr-5" alt="built on blockly" src="images/logo_built_on.png" style='width: 200px;' data-holder-rendered="true">
+
+                        <img class="rounded mt-3" alt="reset" src="images/title.png" data-holder-rendered="true">
+
+                    </div>
+                </div>
+            </div>
+            <hr />
+        </footer>
+
+        <footer class="text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <p>Copyright ©2021 mmousiou. All rights reserved.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="maze/js/jquery-3.3.1.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="maze/js/popper.min.js"></script>
+        <script src="maze/js/bootstrap-4.3.1.js"></script>
+</body>
+
+</html>

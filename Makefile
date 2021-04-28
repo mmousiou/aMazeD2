@@ -2,9 +2,9 @@
 # Definitions
 ##############################
 
-USER_APPS = {index,maze}
-ALL_JSON = {./,index,maze}
-ALL_TEMPLATES = appengine/template.soy,appengine/index/template.soy,appengine/maze/template.soy
+USER_APPS = {index,maze,turtle}
+ALL_JSON = {./,index,maze,turtle}
+ALL_TEMPLATES = appengine/template.soy,appengine/index/template.soy,appengine/maze/template.soy,appengine/turtle/template.soy
 
 APP_ENGINE_THIRD_PARTY = appengine/third-party
 SOY_COMPILER = java -jar third-party-downloads/SoyToJsSrcCompiler.jar --shouldProvideRequireSoyNamespaces --isUsingIjData
@@ -28,13 +28,17 @@ maze-en: common-en
 	$(SOY_COMPILER) --outputPathFormat appengine/maze/generated/en/soy.js --srcs appengine/maze/template.soy
 	python build-app.py maze en
 
+turtle-en: common-en
+	$(SOY_COMPILER) --outputPathFormat appengine/turtle/generated/en/soy.js --srcs appengine/turtle/template.soy
+	python build-app.py turtle en
+
 
 common-en:
 	$(SOY_COMPILER) --outputPathFormat appengine/generated/en/soy.js --srcs appengine/template.soy
 
-en: index-en puzzle-en maze-en
+en: index-en maze-en turtle-en
 
-index  maze : common
+index  maze turtle : common
 	@echo "Generating JS from appengine/$@/template.soy"
 	mkdir -p appengine/$@/generated;
 	i18n/json_to_js.py --output_dir appengine/$@/generated --template appengine/$@/template.soy json/*.json;
