@@ -1,6 +1,6 @@
 This game is based on Blockly Games maze. Languages: English, Greek .
 
-You can play the game locally and if you wish to change the code you can run
+You can play the game locally or change the code.  First you must run the commands
 
 make deps
 
