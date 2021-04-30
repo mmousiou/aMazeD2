@@ -1,5 +1,5 @@
-![aMazed](/appengine/images/logo_amazed.png)
-# This game is based on Blockly Games maze and turtle. 
+![aMazed](/appengine/images/logo_amazed.png) 
+# This game is based on Blockly Games maze and turtle. Version 2 --no help provided.
 
 Languages: English, Greek .
 
@@ -24,7 +24,7 @@ game.
 
 ## Sample
 **aMazeD with no help!**
-https://mazenocomments.000webhostapp.com/
+(https://mazenocomments.000webhostapp.com/index.html)
 
 ## Original games:
 
