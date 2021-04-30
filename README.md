@@ -1,4 +1,6 @@
-# This game is based on Blockly Games maze. Languages: English, Greek .
+# This game is based on Blockly Games maze and turtle. 
+
+Languages: English, Greek .
 
 ## You can play the game locally or change the code.  First you must run the commands
 
@@ -19,11 +21,11 @@ wsl
 (to initiate linux subsystem on windows) on the file directory containing the
 game.
 
-Sample
+## Sample
 **aMazeD with no help!**
 https://mazenocomments.000webhostapp.com/
 
-Original games:
+## Original games:
 
 ![Blockly Games](https://raw.githubusercontent.com/wiki/google/blockly-games/title.png)
 
