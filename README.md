@@ -1,3 +1,4 @@
+![aMazed](/appengine/images/logo_amazed.png)
 # This game is based on Blockly Games maze and turtle. 
 
 Languages: English, Greek .
