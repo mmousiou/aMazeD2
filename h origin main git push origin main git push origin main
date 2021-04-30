@@ -1,0 +1,42 @@
+[33mcommit 9ecf120094f125914199eaa4e6d167a2ec5c9af9[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Merge: e9f3a5c fc5486d
+Author: Maria <mmousiou@gmail.com>
+Date:   Wed Apr 28 18:00:35 2021 +0300
+
+    Merge branch 'main' of https://github.com/mmousiou/mazeWithComments
+
+[33mcommit e9f3a5ca80f36c2bff4598eb54046ee2699cbc6d[m
+Author: Maria <mmousiou@gmail.com>
+Date:   Wed Apr 28 17:52:05 2021 +0300
+
+    version 7 final no comments
+
+[33mcommit c2f32a6829824a3057703db01463960cee6ac3e9[m
+Author: Maria <mmousiou@gmail.com>
+Date:   Wed Mar 24 22:12:37 2021 +0200
+
+    Maze version-2 όλες οι αλλαγές με results και info 24-03.
+
+[33mcommit aca5044c381b90071a9b1aeae9bcdbb077822c44[m
+Author: Maria <mmousiou@gmail.com>
+Date:   Wed Mar 24 14:59:54 2021 +0200
+
+    Backup of maze5help 24-03
+
+[33mcommit fc5486d7b44e7de71aa6f40faa9abde3a9c486fc[m
+Author: mmousiou <72067199+mmousiou@users.noreply.github.com>
+Date:   Fri Mar 19 16:23:15 2021 +0200
+
+    Update README.md
+
+[33mcommit c0ad0ac266f60837215c751dcef61134fd91f2f8[m
+Author: Maria <mmousiou@gmail.com>
+Date:   Fri Mar 19 15:08:32 2021 +0200
+
+    Clean the unnecessary files and change MD
+
+[33mcommit 598ef68eaf4ecf14c6e64a8d4a2c3dfa72e6ffd2[m
+Author: Maria <mmousiou@gmail.com>
+Date:   Thu Mar 18 22:34:46 2021 +0200
+
+    First commit
