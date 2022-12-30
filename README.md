@@ -29,8 +29,8 @@ have to run the command
 (to initiate linux subsystem on windows) on the file directory containing the game.
 
 ## Sample
-**aMazeD no help!**
-https://mazenocomments.000webhostapp.com/index.html
+**aMazeD with help!**
+https://amazed-demo.000webhostapp.com
 
 ## Original games:
 
